@@ -23,7 +23,7 @@ function palette(t, p) {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 600);
   pixelDensity(1);
   background(0);
 
@@ -47,7 +47,7 @@ function draw() {
   loadPixels();
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      let Z = new Complex(map(x + offsetX, -200, width, -2.5 * zoom, 1 * zoom), map(y + offsetY, 0, height, 1 * zoom, -1 * zoom));
+      let Z = new Complex(map(x + offsetX, -200, width, -1.75 * zoom, 1 * zoom), map(y + offsetY, 0, height, 1 * zoom, -1 * zoom));
       if (toggle) C = Z.copy();
 
       let bright = julia(Z, C);
