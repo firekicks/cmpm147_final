@@ -23,7 +23,7 @@ function palette(t, p) {
 }
 
 function setup() {
-  createCanvas(800, 600);
+  createCanvas(windowWidth, windowHeight);
   pixelDensity(1);
   background(0);
 
@@ -34,6 +34,7 @@ function setup() {
   colorAnimationButton = select('#toggleColorAnimation');
   cSliderX.input(loop);
   cSliderY.input(loop);
+
 
   valueAnimationButton.mousePressed(toggleValueAnimation);
   colorAnimationButton.mousePressed(toggleColorAnimation);
@@ -46,7 +47,7 @@ function draw() {
   loadPixels();
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      let Z = new Complex(map(x + offsetX, 0, width, -1.75 * zoom, 1 * zoom), map(y + offsetY, 0, height, 1 * zoom, -1 * zoom));
+      let Z = new Complex(map(x + offsetX, -200, width, -2.5 * zoom, 1 * zoom), map(y + offsetY, 0, height, 1 * zoom, -1 * zoom));
       if (toggle) C = Z.copy();
 
       let bright = julia(Z, C);
@@ -115,8 +116,12 @@ function applySeeds() {
   randomSeed(colorSeed);
 
   currentPalette = {
-    a: { x: random(0.4, 0.6), y: random(0.4, 0.6), z: random(0.4, 0.6) },
-    b: { x: random(0.4, 0.6), y: random(0.4, 0.6), z: random(0.4, 0.6) },
+    // a: { x: random(0.4, 0.6), y: random(0.4, 0.6), z: random(0.4, 0.6) },
+    // b: { x: random(0.4, 0.6), y: random(0.4, 0.6), z: random(0.4, 0.6) },
+    // c: { x: random(0.8, 1.2), y: random(0.8, 1.2), z: random(0.8, 1.2) },
+    // d: { x: random(0.6, 0.2), y: random(0.6, 0.2), z: random(0.6, 0.2) },
+    a: { x: random(0.4, 1), y: random(0.4, 1), z: random(0.4, 1) },
+    b: { x: random(0.4, 1), y: random(0.4, 1), z: random(0.4, 1) },
     c: { x: random(0.8, 1.2), y: random(0.8, 1.2), z: random(0.8, 1.2) },
     d: { x: random(0.6, 0.2), y: random(0.6, 0.2), z: random(0.6, 0.2) },
   };
